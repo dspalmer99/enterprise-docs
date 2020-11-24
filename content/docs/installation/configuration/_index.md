@@ -8,7 +8,7 @@ weight: 9
 
 Configuring Anchore Enterprise starts with configuring the core Anchore Engine deployment, along with specific configurations for each enterprise service.  Enterprise deployments using the trial quickstart (docker-compose) or production (using Helm or other) are designed to run by default with no modifications necessary to get started, though many options are available to tune your production deployment to fit your needs.  To start, please first refer to the Anchore Engine configuration guide, followed with finding enterprise service specific configuration options within their own sections.
 
-- [Anchore Engine Configuration]({{< ref "/docs/engine/engine_installation/configuration" >}})
+- [Anchore Engine Configuration]({{< ref "/docs/installation/configuration/configuring_engine/_index.md" >}})
 - [Enterprise UI]({{< ref "/docs/installation/ui" >}})
 - [Enterprise Feeds Service]({{< ref "/docs/installation/feeds" >}})
 - [Enterprise RBAC Module]({{< ref "/docs/installation/rbac" >}})
