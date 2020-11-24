@@ -6,7 +6,7 @@ weight: 4
 
 ### Adding Anchore Scanning to Gitlab
 
-There are two different solutions for adding Anchore Engine image scanning to your GitLab CI/CD pipelines. The 'on premises' solution requires a functional installation of Anchore Engine running on a system that is accessible from your GitLab runners. The 'integrated' solution allows you to run Anchore Engine directly on your GitLab docker runner and utilizes a pre-populated vulnerability database image. This solution does not require any external systems. 
+There are two different solutions for adding Anchore Enterprise image scanning to your GitLab CI/CD pipelines. The 'on premises' solution requires a functional installation of Anchore Enterprise running on a system that is accessible from your GitLab runners. The 'integrated' solution allows you to run Anchore Enterprise directly on your GitLab docker runner and utilizes a pre-populated vulnerability database image. This solution does not require any external systems. 
 
 A container scanning job can be added to the CI/CD pipeline to allow any image to be scanned for vulnerabilities and policy compliance.
 
@@ -14,11 +14,11 @@ A container scanning job can be added to the CI/CD pipeline to allow any image t
 
 This sample pipeline runs directly on a GitLab runner, including shared runners on gitlab.com
 
-The Docker executor is required for this job, as it utilizes the official Anchore Engine container.
+The Docker executor is required for this job, as it utilizes the official Anchore Enterprise container.
 
 A fully functional pipeline can be viewed at [gitlab.com/anchore/gitlab-demo](https://gitlab.com/anchore/gitlab-demo/blob/master/.gitlab-ci.yml)
 
-To be a thorough as possible, this document will provide an entire Docker build/scan/publish pipeline. This is just one example of a pipeline utilizing the integrated Anchore Engine solution, users are free to tweak it to their needs. The 'container_scan' job is responsible for the actual Anchore Engine image scanning, the only requirement of this job is that the image to be scanned is pushed to the GitLab registry. 
+To be a thorough as possible, this document will provide an entire Docker build/scan/publish pipeline. This is just one example of a pipeline utilizing the integrated Anchore Enterprise solution, users are free to tweak it to their needs. The 'container_scan' job is responsible for the actual Anchore image scanning, the only requirement of this job is that the image to be scanned is pushed to the GitLab registry. 
 
 ```
 variables:
@@ -91,11 +91,11 @@ The runner will require network access to two end points:
 Registry that contains the anchore/anchore-cli:latest
 By default that is hosted on DockerHub however the image can be pushed to any registry
 
-Network access to communicate to an Anchore Engine service. Typically on port 8228
+Network access to communicate to an Anchore Enterprise service. Typically on port 8228
 
-A running Anchore Engine is required, this does not need to be run within the Gitlab infrastructure as long as the HTTP(s) endpoint of the Anchore Engine is accessible by the Github runner.
+A running Anchore Enterprise is required, this does not need to be run within the Gitlab infrastructure as long as the HTTP(s) endpoint of Anchore Enterprise is accessible by the Github runner.
 
-If the Anchore Engine will require credentials to pull the image to be analyzed from a Docker registry then the credentials should be added to Anchore Engine using the following procedures.
+If Anchore Enterprise will require credentials to pull the image to be analyzed from a Docker registry then the credentials should be added to Anchore Enterprise using the following procedures.
 
 An example job is shown below and is attached at the bottom of this page named anchore-on-prem-gitlab.txt
 
@@ -141,17 +141,17 @@ anchore_scan:
     - image-packages.json
 ```
 
-The container to be scanned should have been pushed to a registry from which the Anchore Engine can pull the image.
+The container to be scanned should have been pushed to a registry from which Anchore Enterprise can pull the image.
 
-The first step of the job uses the Anchore CLI to instruct the Anchore Engine to analyze the image. The analysis process may take anywhere from 20 second to a few minutes depending on the size of the image, storage performance and network connectivity. During this period the Anchore Engine will:
+The first step of the job uses the Anchore CLI to instruct Anchore Enterprise to analyze the image. The analysis process may take anywhere from 20 second to a few minutes depending on the size of the image, storage performance and network connectivity. During this period Anchore Enterprise will:
 
-- Download all the layers of the image to the Anchore Engine
+- Download all the layers of the image to Anchore Enterprise
 - Extract the layers to a temporary location
 - Analyze the image including reading package data, scanning for secrets or other sensitive information,  recording file data such as a digests (checksum) of all files in the image including details such as file size and ownership
 - Add analysis data to the Anchore database
 - Delete temporary files
 
-The job will poll the Anchore Engine every 10 seconds to check if the image has been analyzed and will repeat this until the maximum number of retries specified has been reached.
+The job will poll Anchore Enterprise every 10 seconds to check if the image has been analyzed and will repeat this until the maximum number of retries specified has been reached.
 
 The job will output 8 JSON artifacts for storage within the Job's workspace.
 

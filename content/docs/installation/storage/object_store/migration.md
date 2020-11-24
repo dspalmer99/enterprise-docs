@@ -6,9 +6,9 @@ weight: 1
 
 ### Overview
 
-To cleanly migrate data from one archive driver to another, Anchore Engine includes some tooling that automates the process in the 'anchore-manager' tool packaged with the system.
+To cleanly migrate data from one archive driver to another, Anchore Enterprise includes some tooling that automates the process in the 'anchore-manager' tool packaged with the system.
 
-The migration process is an offline process; Anchore Engine is not designed to handle an online migration. 
+The migration process is an offline process; Anchore Enterprise is not designed to handle an online migration. 
 
 For the migration process you will need:
 
@@ -19,7 +19,7 @@ For the migration process you will need:
 
 At a high-level the process is:
 
-1. Shutdown all anchore engine services and components. The system should be fully offline, but the database must be online and available. For a docker-compose install, this is achieved by simply stopping the engine container, but not deleting it.
+1. Shutdown all anchore enterprise services and components. The system should be fully offline, but the database must be online and available. For a docker-compose install, this is achieved by simply stopping the engine container, but not deleting it.
 2. Prepare a new config.yaml that includes the new driver configuration for the destination of the migration (dest-config.yaml) in the same location as the existing config.yaml
 3. Test the new dest-config.yaml to ensure correct configuration
 4. Run the migration

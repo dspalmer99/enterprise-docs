@@ -19,7 +19,7 @@ time and network usage during the analysis process itself. See: [Layer Caching](
 
 ## Storing Analysis Results
 
-Anchore Engine is a data intensive system and uses external storage systems for all data persistence. None of the services
+Anchore Enterprise is a data intensive system and uses external storage systems for all data persistence. None of the services
 are stateful in themselves.
 
 For structured data that must be quickly queried and indexed, Anchore relies on PostgreSQL as its primary data store. Any
