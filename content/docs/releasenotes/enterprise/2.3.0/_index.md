@@ -83,5 +83,5 @@ of images in the database, this may take a long time (hours potentially).
 
 See [RHSA-to-CVE Feed Change]({{< ref "/docs/releasenotes/enterprise/2.3.0/centos_to_rhel_upgrade" >}}) for more information on the change and upgrade implications. 
 
-To upgrade, use the new version of the Helm chart or docker-compose provided with this release. The new chart and compose files contain all needed configuration changes. See [Enterprise Upgrade to 2.3.0]({{< ref "/docs/installation/upgrade_enterprise" >}}) for details on this specific upgrade process and how to update your own deployment templates if you are not using the official Helm chart.
+To upgrade, use the new version of the Helm chart or docker-compose provided with this release. The new chart and compose files contain all needed configuration changes. See [Enterprise Upgrade to 2.3.0]({{< ref "/docs/installation/upgrade" >}}) for details on this specific upgrade process and how to update your own deployment templates if you are not using the official Helm chart.
 

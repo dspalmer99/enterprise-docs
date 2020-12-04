@@ -58,7 +58,7 @@ Additional minor bug fixes, significant test framework improvements, and perform
 
 ### Upgrading
 
-* [Upgrading Anchore Engine]({{< ref "/docs/installation/upgrade_engine" >}})
+* [Upgrading Anchore]({{< ref "/docs/installation/upgrade" >}})
 
 0.7.0 Upgrade Information
 
