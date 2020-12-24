@@ -46,7 +46,7 @@ To generate a report of language package (NPM/GEM/Java/Python) vulnerabilities, 
 
 `anchore-cli image vuln node:latest non-os`
 
-**Note:** to enable 'non-os' scanning, the system must be configured to sync the 'nvd' data feed - see [Initial Configuration]({{< ref "/docs/installation/configuration/" >}}) and [Feeds]({{< ref "/docs/installation/feeds" >}}) for details.
+**Note:** to enable 'non-os' scanning, the system must be configured to sync the 'nvd' data feed - see [Initial Configuration]({{< ref "/docs/installation/configuration" >}}) and [Feeds]({{< ref "/docs/installation/feeds" >}}) for details.
 
 To generate a list of all vulnerabilities that can be found, regardless of whether they are against an OS or non-OS package type, the 'all' vulnerability type can be used:
 
