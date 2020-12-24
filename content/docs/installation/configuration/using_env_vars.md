@@ -6,9 +6,9 @@ weight: 6
 
 Environment variable references may be used in the Anchore config.yaml file to set values that need to be configurable during deployment. 
 
-Using this mechanism a common configuration file can be used with multiple Anchore Engine instances with key values being passed using environment variables.
+Using this mechanism a common configuration file can be used with multiple Anchore instances with key values being passed using environment variables.
 
-The config.yaml configuration file is read by the Anchore Engine any references to variables prefixed with ANCHORE will be replaced by the value of the matching environment variable.
+The config.yaml configuration file is read by Anchore and any references to variables prefixed with ANCHORE will be replaced by the value of the matching environment variable.
 
 For example in the sample configuration file the *host_id* parameter is set be appending the ANCHORE_HOST_ID variable to the string *dockerhostid*
 
@@ -29,7 +29,7 @@ ANCHORE_HOST_ID=myservice1
 ANCHORE_LOG_LEVEL=DEBUG
 ```
 
-The Anchore Engine will check for an environment variable named *ANCHORE_ENV_FILE* if this variable is set the the Anchore Engine will attempt to read a file at the location specified in this variable.
+The system will check for an environment variable named *ANCHORE_ENV_FILE* if this variable is set then Anchore will attempt to read a file at the location specified in this variable.
 
 The Anchore environment file is read before any other Anchore environment variables so any ANCHORE variables passed in the environment will override the values set in the environment file.
 

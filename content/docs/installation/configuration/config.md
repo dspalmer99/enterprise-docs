@@ -6,7 +6,7 @@ weight: 1
 
 ## Initial Configuration
 
-A single configuration file config.yaml is required to run the Anchore Engine - by default, this file is embedded in the anchore-engine container image, located in /config/config.yaml.  The default configuration file is provided as a way to get started, which is functional out of the box, without modification, when combined with either the Helm method or docker-compose method of installing anchore-engine.  The default configuration is set up to use environment variable substitutions so that configuration values can be controlled by setting the corresponding environment variables at deployment time (see [Using Environment Variables in Anchore]({{< ref "using_env_vars" >}}).  To review the embedded configuration file settings, see the [default config.yaml on github](https://github.com/anchore/anchore-engine/blob/master/conf/default_config.yaml) which is populated with several environment variables (all starting with ANCHORE_), the [example docker-compose.yaml on github](https://github.com/anchore/anchore-engine/blob/master/docker-compose.yaml) which includes several site-specific environment variable default settings, and the [anchore engine Dockerfile on github](https://github.com/anchore/anchore-engine/tree/master/Dockerfile) which sets baseline environment variable settings.
+A single configuration file config.yaml is required to run Anchore - by default, this file is embedded in the anchore-engine container image, located in /config/config.yaml.  The default configuration file is provided as a way to get started, which is functional out of the box, without modification, when combined with either the Helm method or docker-compose method of installing anchore-engine.  The default configuration is set up to use environment variable substitutions so that configuration values can be controlled by setting the corresponding environment variables at deployment time (see [Using Environment Variables in Anchore]({{< ref "using_env_vars" >}}).  To review the embedded configuration file settings, see the [default config.yaml on github](https://github.com/anchore/anchore-engine/blob/master/conf/default_config.yaml) which is populated with several environment variables (all starting with ANCHORE_), the [example docker-compose.yaml on github](https://github.com/anchore/anchore-engine/blob/master/docker-compose.yaml) which includes several site-specific environment variable default settings, and the [anchore engine Dockerfile on github](https://github.com/anchore/anchore-engine/tree/master/Dockerfile) which sets baseline environment variable settings.
 
 Each environment variable (starting with ANCHORE_) in the default config.yaml is set (either the baseline as set in the Dockerfile, or an override in docker-compose or Helm) to ensure that the system comes up with a fully populated configuration.
 
@@ -34,8 +34,8 @@ While anchore engine is set up to run out of the box without modifications, and 
 * Extract the default config file from the anchore-engine container image:
 
 ```
-# docker pull docker.io/anchore/anchore-engine:latest
-# docker create --name ae docker.io/anchore/anchore-engine:latest
+# docker pull docker.io/anchore/enterprise:latest
+# docker create --name ae docker.io/anchore/enterprise:latest
 # docker cp ae:/config/config.yaml ./my_config.yaml
 # docker rm ae
 ```
@@ -46,27 +46,27 @@ While anchore engine is set up to run out of the box without modifications, and 
 
 ```YAML
 ...
-  engine-api:
+  api:
 ...
     volumes:
      - /path/to/my_config.yaml:/config/config.yaml:z
 ...
-  engine-catalog:
+  catalog:
 ...
     volumes:
      - /path/to/my_config.yaml:/config/config.yaml:z
 ...
-  engine-simpleq:
+  simpleq:
 ...
     volumes:
      - /path/to/my_config.yaml:/config/config.yaml:z
 ...
-  engine-policy-engine:
+  policy-engine:
 ...
     volumes:
      - /path/to/my_config.yaml:/config/config.yaml:z
 ...
-  engine-analyzer:
+  analyzer:
 ...
     volumes:
      - /path/to/my_config.yaml:/config/config.yaml:z
