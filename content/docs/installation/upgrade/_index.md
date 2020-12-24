@@ -4,8 +4,8 @@ linkTitle: "Upgrade"
 weight: 10
 ---
 
-Upgrading from one version of Anchore Enterprise (UI, Enterprise Services, and Anchore Engine) is normally handled seamlessly by the Helm chart, and 
-trial docker-compose configuration files that are provided along with each release, following the general methods from this guide. 
+Upgrading from one version of Anchore Enterprise to another is normally handled seamlessly by the Helm chart or 
+trial docker-compose configuration files that are provided along with each release. Those follow the general methods from this guide. 
 See [Specific Instructions](#specific-versions) section for special instructions related to specific versions.
 
 Anchore is distributed as a docker image, which is comprised of smaller micro-services that can be deployed in a single container or scaled out to handle load.
